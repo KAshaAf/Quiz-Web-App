@@ -100,7 +100,6 @@ const restartBtn = document.getElementById("restart-btn")
 const hint = document.getElementById("hint")
 const hintText = document.getElementById("hint-text")
 
-let selectedOption = ""
 let score = 0
 let currentQuestionIndex = 0
 
@@ -170,7 +169,7 @@ prevBtn.addEventListener("click",function(){
 })
 
 nextBtn.addEventListener("click",function(){
-  selectedOption = document.querySelector('input[name = "option-el"]:checked')
+  const selectedOption = document.querySelector('input[name = "option-el"]:checked')
   if(selectedOption === null){
     alert("Please select an option before moving to the next question.")
   } else {
@@ -179,7 +178,7 @@ nextBtn.addEventListener("click",function(){
 })
 
 submitBtn.addEventListener("click", function(){
-  selectedOption = document.querySelector('input[name = "option-el"]:checked').value
+  const selectedOption = document.querySelector('input[name = "option-el"]:checked').value
   checkAnswer(selectedOption)
   mainEL.innerHTML = `<h4>Your responses have been submitted. You have scored ${score} out of ${quizData.length}.</h4>`
 })
