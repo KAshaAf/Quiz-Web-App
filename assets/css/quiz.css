@@ -1,0 +1,17 @@
+ul#options {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.quiz-navigation {
+    margin: 20px 0px;
+}
+
+ul#options li {
+    padding: 5px 0px;
+}
+
+#hint-text{
+    display: none;
+}

@@ -1,0 +1,88 @@
+@media only screen and (max-width: 778px) {
+    .bottom-margin{
+        margin-bottom: 22px;
+    }
+    .space{
+        margin-top: 50px !important;
+        margin-bottom: 50px !important;
+    }
+}
+@media only screen and (max-width: 576px) {
+    .space{
+        padding-left: 30px;
+        padding-right: 30px;
+
+    }
+}
+body{
+    background-color: #FAFCE4;
+}
+.navbar-color{
+    background-color: tomato;
+}
+.footer-color{
+    background-color: #612A0C;
+}
+.nav{
+    color:black;
+    padding:5px;
+}
+.site-logo{
+    margin-left:12px;
+    font-weight: 800;
+    margin-top: 4px;
+}
+.footer-link{
+    text-decoration: none;
+    color:white;
+    font-weight: bold;
+    padding: 12px;
+    background-color: black;
+}
+.footer-link:hover{
+    color:antiquewhite;
+}
+footer{
+    padding:50px;
+}
+.signature{
+    font-weight: 800;
+}
+.red-color{
+    background-color: #F53214;
+}
+.blue-color{
+    background-color: #1432F5;
+}
+.green-color{
+    background-color: #44B015;
+}
+.yellow-color{
+    background-color: #EAEA03;
+}
+.center-align{
+    text-align: center;
+}
+.subject-card{
+    padding: 80px;
+    color: white;
+}
+.subject-icon{
+    font-size: 120px;
+    padding: 10px;
+}
+.margin-auto{
+    margin-left: auto;
+    margin-right: auto;
+}
+.space{
+    padding:auto;
+    margin: 230px auto;
+}
+.quiz-link{
+    text-decoration: none;
+}
+.quiz-link:hover{
+    position: relative; 
+    bottom: -5px;
+}
