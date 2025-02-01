@@ -147,13 +147,24 @@ hint.addEventListener("click", function(){
   }
 })
 
+function realTimeFeedback(){
+  //as soon as an answer is selected by the user
+  //check if its correct or not 
+  //if correct, show user it is the correct answer & increase score
+  //if wrong, show user its wrong, show the correct answer 
+  //score stays the same
+  
+}
+
 function checkAnswer(selectedOption){
   const correctAnswer = quizData[currentQuestionIndex].answer
 
   if(correctAnswer === selectedOption){
     score++
   }
+}
 
+function nextQuestion(){
   currentQuestionIndex++
 
   if(currentQuestionIndex < quizData.length){
@@ -171,22 +182,23 @@ prevBtn.addEventListener("click",function(){
 nextBtn.addEventListener("click",function(){
   const selectedOption = document.querySelector('input[name = "option-el"]:checked')
   if(selectedOption === null){
-    alert("Please select an option before moving to the next question.")
+    nextQuestion()
   } else {
     checkAnswer(selectedOption.value)
+    nextQuestion()
   }
 })
 
 submitBtn.addEventListener("click", function(){
-  const selectedOption = document.querySelector('input[name = "option-el"]:checked').value
-  checkAnswer(selectedOption)
+  const selectedOption = document.querySelector('input[name = "option-el"]:checked')
+  checkAnswer(selectedOption.value)
   mainEL.innerHTML = `<h4>Your responses have been submitted. You have scored ${score} out of ${quizData.length}.</h4>`
 })
 
-//add feedback functionality at the end of the quiz   
+//add feedback functionality at the end of the quiz 
+//OR 
+//add real time feedback  
 //add backwards navigation - does not save the answers for previous questions
-//add a progress tracker or time limit on the quiz 
-//add a back to quiz button after result is shown
+//add a progress tracker 
+//add a time limit on the quiz 
 //add an option to randomize the options each time the quiz is taken 
-//add a functionality where the user can submit quiz and navigate 
-//back and forth even if no answer has been selected by them
