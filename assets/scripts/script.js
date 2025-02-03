@@ -17,16 +17,16 @@ const quizData = [
     answer: "Mercury",
     hint: "This is a hint for the question 3."
   },
-  // {
-  //   question: "Who painted the Mona Lisa?",
-  //   options: ["Vincent van Gogh", "Pablo Picasso", "Leonardo da Vinci", "Claude Monet"],
-  //   answer: "Leonardo da Vinci"
-  // },
-  // {
-  //   question: "What is the largest ocean on Earth?",
-  //   options: ["Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Pacific Ocean"],
-  //   answer: "Pacific Ocean"
-  // },
+  {
+    question: "Who painted the Mona Lisa?",
+    options: ["Vincent van Gogh", "Pablo Picasso", "Leonardo da Vinci", "Claude Monet"],
+    answer: "Leonardo da Vinci"
+  },
+  {
+    question: "What is the largest ocean on Earth?",
+    options: ["Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Pacific Ocean"],
+    answer: "Pacific Ocean"
+  },
   // {
   //   question: "What is the chemical symbol for gold?",
   //   options: ["Au", "Ag", "Pb", "Fe"],
@@ -100,9 +100,12 @@ const restartBtn = document.getElementById("restart-btn")
 const hint = document.getElementById("hint")
 const hintText = document.getElementById("hint-text")
 const selectionResult = document.getElementById("selection-result")
+const bar = document.getElementById("bar")
+
 
 let score = 0
 let currentQuestionIndex = 0
+let progress = 0
 
 
 function displayQuiz(){
@@ -110,11 +113,13 @@ function displayQuiz(){
   quizQuestion.innerHTML = `${currentQuestionIndex+1}. ${question}`
   displayOptions(quizData[currentQuestionIndex].options)
 
-  if(currentQuestionIndex === 0){
-    prevBtn.style.display = "none"
-  } else{
-    prevBtn.style.display = "inline-block";  
-  }
+  prevBtn.style.display = "none"
+
+  // if(currentQuestionIndex === 0){
+  //   prevBtn.style.display = "none"
+  // } else{
+  //   prevBtn.style.display = "inline-block";  
+  // }
 
   if (currentQuestionIndex === quizData.length - 1) {
     nextBtn.style.display = "none";  
@@ -157,10 +162,12 @@ hint.addEventListener("click", function(){
       if(selectedOption.value === correctAnswer){
         selectionResult.innerHTML = `Your answer is correct!`
         disableNewSelection()
+        //updateProgressTracker()
         score++
       } else {
         selectionResult.innerHTML = `Wrong answer. The correct answer is ${correctAnswer}.`
         disableNewSelection()
+        //updateProgressTracker()
       }
     } else {
       console.error("No match found in the document")
@@ -189,6 +196,7 @@ function nextQuestion(){
 
   if(currentQuestionIndex < quizData.length){
     displayQuiz()
+    updateProgressTracker()
   }
 }
 
@@ -215,9 +223,22 @@ submitBtn.addEventListener("click", function(){
   mainEL.innerHTML = `<h4>Your responses have been submitted. You have scored ${score} out of ${quizData.length}.</h4>`
 })
 
+function updateProgressTracker(){
+ const totalProgress = quizData.length
+
+ if(progress < totalProgress){
+  progress++
+  let width = (progress / totalProgress)* 100
+  bar.style.width = `${width}%`
+  bar.innerHTML = `${width}%`
+ }
+
+}
  
-//add backwards navigation - does not save the answers for previous questions
-//add a progress tracker 
-//add feedback functionality at the end of the quiz
 //add a time limit on the quiz 
 //add an option to randomize the options each time the quiz is taken 
+
+//add feedback functionality at the end of the quiz
+//add backwards navigation - does not save the answers for previous questions
+//backwards navigation would only make sense if the feedback was not real time 
+

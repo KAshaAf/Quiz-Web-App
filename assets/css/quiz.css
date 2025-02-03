@@ -15,3 +15,17 @@ ul#options li {
 #hint-text{
     display: none;
 }
+
+#progress-tracker {
+    height: 30px;
+    background: bisque;
+    margin: 28px 0px;
+    width: 100%;
+}
+
+#bar{
+    height: 30px;
+    background: red;
+    width: 0%;
+    text-align: center;
+}
