@@ -99,6 +99,7 @@ const scoreEl = document.getElementById("score-el")
 const restartBtn = document.getElementById("restart-btn")
 const hint = document.getElementById("hint")
 const hintText = document.getElementById("hint-text")
+const selectionResult = document.getElementById("selection-result")
 
 let score = 0
 let currentQuestionIndex = 0
@@ -132,7 +133,7 @@ function displayOptions(optionsArray){
     options+=
     `<li>
       <input type="radio" name="option-el" value="${optionsArray[i]}">
-      ${optionsArray[i]}
+      ${optionsArray[i]} 
     </li>`
   }
   quizOptions.innerHTML = options
@@ -147,13 +148,31 @@ hint.addEventListener("click", function(){
   }
 })
 
-function realTimeFeedback(){
-  //as soon as an answer is selected by the user
-  //check if its correct or not 
-  //if correct, show user it is the correct answer & increase score
-  //if wrong, show user its wrong, show the correct answer 
-  //score stays the same
-  
+  document.addEventListener("change", (event) => {
+    const correctAnswer = quizData[currentQuestionIndex].answer
+    let selectedOption;
+
+    if (event.target.matches('input[name="option-el"]')) {
+      selectedOption = event.target
+      if(selectedOption.value === correctAnswer){
+        selectionResult.innerHTML = `Your answer is correct!`
+        disableNewSelection()
+        score++
+      } else {
+        selectionResult.innerHTML = `Wrong answer. The correct answer is ${correctAnswer}.`
+        disableNewSelection()
+      }
+    } else {
+      console.error("No match found in the document")
+    }
+  });
+
+
+function disableNewSelection(){
+  const radioButtons = document.querySelectorAll('input[name = "option-el"]')
+  for(var i=0;i<radioButtons.length;i++) {
+    radioButtons[i].disabled = true;
+ }
 }
 
 function checkAnswer(selectedOption){
@@ -165,6 +184,7 @@ function checkAnswer(selectedOption){
 }
 
 function nextQuestion(){
+  selectionResult.innerHTML = ""
   currentQuestionIndex++
 
   if(currentQuestionIndex < quizData.length){
@@ -195,10 +215,9 @@ submitBtn.addEventListener("click", function(){
   mainEL.innerHTML = `<h4>Your responses have been submitted. You have scored ${score} out of ${quizData.length}.</h4>`
 })
 
-//add feedback functionality at the end of the quiz 
-//OR 
-//add real time feedback  
+ 
 //add backwards navigation - does not save the answers for previous questions
 //add a progress tracker 
+//add feedback functionality at the end of the quiz
 //add a time limit on the quiz 
 //add an option to randomize the options each time the quiz is taken 
