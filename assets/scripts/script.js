@@ -27,66 +27,6 @@ const quizData = [
     options: ["Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Pacific Ocean"],
     answer: "Pacific Ocean"
   },
-  // {
-  //   question: "What is the chemical symbol for gold?",
-  //   options: ["Au", "Ag", "Pb", "Fe"],
-  //   answer: "Au"
-  // },
-  // {
-  //   question: "Who is the author of '1984'?",
-  //   options: ["George Orwell", "Aldous Huxley", "J.K. Rowling", "Harper Lee"],
-  //   answer: "George Orwell"
-  // },
-  // {
-  //   question: "Which planet is known as the Red Planet?",
-  //   options: ["Earth", "Mars", "Venus", "Jupiter"],
-  //   answer: "Mars"
-  // },
-  // {
-  //   question: "What is the tallest mountain in the world?",
-  //   options: ["Mount Kilimanjaro", "Mount Everest", "Mount Fuji", "K2"],
-  //   answer: "Mount Everest"
-  // },
-  // {
-  //   question: "What is the capital of Japan?",
-  //   options: ["Seoul", "Beijing", "Bangkok", "Tokyo"],
-  //   answer: "Tokyo"
-  // },
-  // {
-  //   question: "Which element has the atomic number 1?",
-  //   options: ["Helium", "Hydrogen", "Oxygen", "Carbon"],
-  //   answer: "Hydrogen"
-  // },
-  // {
-  //   question: "What is the hardest natural substance on Earth?",
-  //   options: ["Gold", "Iron", "Diamond", "Platinum"],
-  //   answer: "Diamond"
-  // },
-  // {
-  //   question: "Who invented the telephone?",
-  //   options: ["Thomas Edison", "Nikola Tesla", "Alexander Graham Bell", "Henry Ford"],
-  //   answer: "Alexander Graham Bell"
-  // },
-  // {
-  //   question: "What is the longest river in the world?",
-  //   options: ["Amazon River", "Nile River", "Yangtze River", "Mississippi River"],
-  //   answer: "Nile River"
-  // },
-  // {
-  //   question: "What is the capital of Australia?",
-  //   options: ["Sydney", "Melbourne", "Canberra", "Brisbane"],
-  //   answer: "Canberra"
-  // },
-  // {
-  //   question: "Which gas do plants absorb from the atmosphere for photosynthesis?",
-  //   options: ["Oxygen", "Carbon Dioxide", "Nitrogen", "Hydrogen"],
-  //   answer: "Carbon Dioxide"
-  // },
-  // {
-  //   question: "What is the largest continent by area?",
-  //   options: ["Africa", "Asia", "Europe", "North America"],
-  //   answer: "Asia"
-  // },
 ];
 
 const mainEL = document.getElementById("main-el")
@@ -102,11 +42,9 @@ const hintText = document.getElementById("hint-text")
 const selectionResult = document.getElementById("selection-result")
 const bar = document.getElementById("bar")
 
-
 let score = 0
 let currentQuestionIndex = 0
 let progress = 0
-
 
 function displayQuiz(){
   let question = quizData[currentQuestionIndex].question
@@ -231,14 +169,5 @@ function updateProgressTracker(){
   let width = (progress / totalProgress)* 100
   bar.style.width = `${width}%`
   bar.innerHTML = `${width}%`
- }
-
-}
+ }}
  
-//add a time limit on the quiz 
-//add an option to randomize the options each time the quiz is taken 
-
-//add feedback functionality at the end of the quiz
-//add backwards navigation - does not save the answers for previous questions
-//backwards navigation would only make sense if the feedback was not real time 
-
