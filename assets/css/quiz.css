@@ -29,3 +29,10 @@ ul#options li {
     width: 0%;
     text-align: center;
 }
+
+p#selection-result {
+    font-size: 12px;
+    padding: 12px 0px;
+    font-weight: 500;
+    color: indianred;
+}

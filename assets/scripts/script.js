@@ -91,27 +91,24 @@ hint.addEventListener("click", function(){
   }
 })
 
-  document.addEventListener("change", (event) => {
-    const correctAnswer = quizData[currentQuestionIndex].answer
-    let selectedOption;
+document.addEventListener("change", (event) => {
+  const correctAnswer = quizData[currentQuestionIndex].answer
+  let selectedOption;
 
-    if (event.target.matches('input[name="option-el"]')) {
-      selectedOption = event.target
-      if(selectedOption.value === correctAnswer){
-        selectionResult.innerHTML = `Your answer is correct!`
-        disableNewSelection()
-        //updateProgressTracker()
-        score++
-      } else {
-        selectionResult.innerHTML = `Wrong answer. The correct answer is ${correctAnswer}.`
-        disableNewSelection()
-        //updateProgressTracker()
-      }
+  if (event.target.matches('input[name="option-el"]')) {
+    selectedOption = event.target
+    if(selectedOption.value === correctAnswer){
+      selectionResult.innerHTML = `Your answer is correct!`
+      disableNewSelection()
+      score++
     } else {
-      console.error("No match found in the document")
+      selectionResult.innerHTML = `Wrong answer. The correct answer is ${correctAnswer}.`
+      disableNewSelection()
     }
-  });
-
+  } else {
+    console.error("No match found in the document")
+  }
+});
 
 function disableNewSelection(){
   const radioButtons = document.querySelectorAll('input[name = "option-el"]')
@@ -158,7 +155,7 @@ nextBtn.addEventListener("click",function(){
 submitBtn.addEventListener("click", function(){
   const selectedOption = document.querySelector('input[name = "option-el"]:checked')
   checkAnswer(selectedOption.value)
-  mainEL.innerHTML = `<h4>Your responses have been submitted. You have scored ${score} out of ${quizData.length}.</h4>`
+  mainEL.innerHTML = `<h4>You have scored ${score} out of ${quizData.length}!.</h4>`
 })
 
 function updateProgressTracker(){
